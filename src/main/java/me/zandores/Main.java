@@ -37,7 +37,10 @@ public class Main {
     private static List<Pizza> parseCSV(String csvFilePath) {
         List<Pizza> pizzas = new ArrayList<>();
         try (Reader reader = new FileReader(csvFilePath);
-             CSVParser csvParser = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(reader)) {
+             CSVParser csvParser = CSVFormat.DEFAULT.builder()
+                     .setHeader()
+                     .setSkipHeaderRecord(true)
+                     .build().parse(reader)) {
             for (CSVRecord csvRecord : csvParser) {
                 // Parse each record into a Pizza object
                 Pizza pizza = new Pizza(
