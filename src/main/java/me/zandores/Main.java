@@ -4,6 +4,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -16,7 +17,9 @@ public class Main {
 
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.out.println("Usage: java Main <csvFilePath> <metric1> <metric2> ...\n");
+            String path = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            String jarName = new File(path).getName();
+            System.out.printf("Usage: java -jar %s <csvFilePath> <metric1> <metric2> ...\n", jarName);
             return;
         }
 
