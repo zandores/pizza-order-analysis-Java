@@ -1,4 +1,4 @@
-# Pizza Order Analysis Project
+# Pizza Order Analysis Project (Java)
 
 ## Usage
 
