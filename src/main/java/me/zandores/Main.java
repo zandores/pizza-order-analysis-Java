@@ -27,10 +27,10 @@ public class Main {
         }
 
         pizzas = parseCSV(csvFile);
-        if (!pizzas.isEmpty()) {
-            for (int i = 1; i < args.length; i++) {
-                processMetric(args[i]);
-            }
+        if (!pizzas.isEmpty()) return;
+
+        for (int i = 1; i < args.length; i++) {
+            processMetric(args[i]);
         }
     }
 
@@ -97,7 +97,6 @@ public class Main {
         }
 
         // Getters and Setters
-
         @Override
         public String toString() {
             return "Pizza{" +
@@ -243,10 +242,7 @@ public class Main {
         for (Pizza pizza : pizzas) {
             String[] ingredientsArray = ((String) pizza.field("pizzaIngredients")).split(", ");
             for (String ingredient : ingredientsArray) {
-                int amount = 0;
-                if (dictionary.get(ingredient) != null) {
-                    amount = dictionary.get(ingredient);
-                }
+                int amount = dictionary.getOrDefault(ingredient, 0);
                 amount += (int) pizza.field("quantity");
                 dictionary.put(ingredient, amount);
             }
