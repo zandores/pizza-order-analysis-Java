@@ -1,4 +1,4 @@
-# Pizza Order Analysis Project (App2)
+# Pizza Order Analysis Project
 
 ## Usage
 
