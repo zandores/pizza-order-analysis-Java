@@ -30,7 +30,10 @@ public class Main {
         }
 
         pizzas = parseCSV(csvFile);
-        if (!pizzas.isEmpty()) return;
+        if (pizzas.isEmpty()) {
+            System.out.printf("File '%s' is empty.\n", csvFile);
+            return;
+        }
 
         for (int i = 1; i < args.length; i++) {
             processMetric(args[i]);
@@ -140,39 +143,17 @@ public class Main {
 
     private static void processMetric(String metric) {
         switch (metric.toLowerCase()) {
-            case "pms":
-                findMostOrderedPizza();
-                break;
-            case "pls":
-                findLeastOrderedPizza();
-                break;
-            case "dms":
-                findMostRevenueDay();
-                break;
-            case "dls":
-                findLeastRevenueDay();
-                break;
-            case "dmsp":
-                findMostSoldPizza();
-                break;
-            case "dlsp":
-                findLeastSoldPizza();
-                break;
-            case "apo":
-                findAverageOrderedPizzasPerOrder();
-                break;
-            case "apd":
-                findAverageOrderedPizzasPerDay();
-                break;
-            case "ims":
-                findMostOrderedIngredient();
-                break;
-            case "hp":
-                findMostOrderedPizzaCategory();
-                break;
-            default:
-                System.out.printf("Command '%s' not found.\n", metric);
-                break;
+            case "pms" -> findMostOrderedPizza();
+            case "pls" -> findLeastOrderedPizza();
+            case "dms" -> findMostRevenueDay();
+            case "dls" -> findLeastRevenueDay();
+            case "dmsp"-> findMostSoldPizza();
+            case "dlsp" -> findLeastSoldPizza();
+            case "apo" -> findAverageOrderedPizzasPerOrder();
+            case "apd" -> findAverageOrderedPizzasPerDay();
+            case "ims" -> findMostOrderedIngredient();
+            case "hp" -> findMostOrderedPizzaCategory();
+            default -> System.out.printf("Command '%s' not found.\n", metric);
         }
     }
 
